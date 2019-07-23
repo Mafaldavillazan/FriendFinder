@@ -1,4 +1,4 @@
-// Dependencies
+// DEPENDENCIES
 // =============================================================
 var express = require("express");
 var path = require("path");
@@ -13,11 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-//Home page
-app.get("/", function (req, res) {
-    res.send("Welcome to the basic page!");
-});
 
+// Take the data from the html file
+// =============================================================
+var htmlRouter = require("./app/routing/htmlRoutes")
+app.use(htmlRouter)
 
 
 
@@ -25,5 +25,5 @@ app.get("/", function (req, res) {
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
+    console.log("App listening on PORT: http://localhost:" + PORT);
 });
