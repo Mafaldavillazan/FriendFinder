@@ -8,17 +8,17 @@ var friendsData = require("../data/friends.js");
 module.exports = function (router) {
 
     //Gets the routes for friends
-    router.get("/api/fiends", function (req, res) {
-        res.JSON(friendsData)
+    router.get("/api/friends", function (req, res) {
+        res.json(friendsData)
     })
 
     //Gets the routes for friends
-    router.post("/api/fiends", function (req, res) {
+    router.post("/api/friends", function (req, res) {
         //Handles the incoming data
         var newFriend = req.body;
 
         //Push into into the arry inside the data
-        friendsObj.push(newFriend)
+        friendsData.push(newFriend)
         res.json(newFriend)
         //Compatibility logic
     })
