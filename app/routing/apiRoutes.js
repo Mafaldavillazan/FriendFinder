@@ -20,3 +20,4 @@ router.post("/api/fiends",function(req,res){
     //Compatibility logic
 })
 
+module.exports = router;

@@ -13,12 +13,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-
-// Take the data from the html file
+// Take the routes and uses them
 // =============================================================
 var htmlRouter = require("./app/routing/htmlRoutes")
 app.use(htmlRouter)
 
+var apiRouter = require("./app/routing/apiRoutes")
+app.use(apiRouter)
 
 
 
