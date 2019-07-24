@@ -6,13 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!--jQuery Library -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Required meta tags -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Using different CSS style that can be applied to bootstrap-->
     <link rel="stylesheet" href="../../css/bootstrap.min.css" media="screen">
     <!-- Icons-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <title>Home</title>
+    <title>Survey</title>
 </head>
 
 <body>
@@ -38,7 +41,7 @@
                     <input type="text" class="form-control" placeholder="Ex: Mafalda Villazan" id="name" required>
 
                     <label class="col-form-label" for="inputDefault">Link to a photo</label>
-                    <input type="text" class="form-control" placeholder="Ex: https:..." id="image.lin" required>
+                    <input type="text" class="form-control" placeholder="Ex: https:..." id="imagelink" required>
 
                     <br>
                     <h4>Questions</h4>
@@ -96,21 +99,52 @@
                     </select>
 
                 </div>
-
+                <br>
                 <div class="jumbotron text-center alert alert-dismissible alert-info">
 
-                    <button type="submit" class="btn btn-outline-info" id="submit">
+                    <button type="submit" class="btn btn-outline-info" id="submit-button">
                         <i class="fa fa-check"></i>
                         Submit
                     </button>
 
                 </div>
 
+
             </div>
 
         </div>
 
     </div>
+
+    <script type="text/javascript">
+
+        $("#submit-button").on("click", function (event) {
+            event.preventDefault();
+
+            //Create an object of the survey input
+            var friendInput = {
+                name: $("#name").val(),
+                photo: $("#imagelink").val(),
+                q1: $("#question1").val(),
+                q2: $("#question2").val(),
+                q3: $("#question3").val(),
+                q4: $("#question4").val()
+            }
+
+            //Push the info into the api/friends
+            $.post("/api/friends", friendInput)
+                .then(function (data) {
+                    console.log(data)
+                    alert("Adding it to the api")
+                })
+
+
+
+        })
+
+    </script>
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
