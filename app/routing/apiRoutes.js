@@ -25,26 +25,32 @@ module.exports = function (router) {
 
     })
 
-    //Variable with the best match info
+    //Variable "dummie"
     var bestMatch = {
         name: "AMIR",
         photo: "https://images.unsplash.com/photo-1465931577419-3e7f810dc552?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
         points: 50
     }
 
+    //Variable that will change the data
+    // var bestMatch = {
+    //     name: "",
+    //     photo: "",
+    //     points: 50
+    // }
+
     router.get("/api/selected", function (req, res) {
         res.json(bestMatch)
     })
 
-
+    //i dont know why is not executing this function and changing the variable
     router.post("/api/selected", function (req, res) {
-
+        var newFriend = friendsData[friendsData.length-1];
         searchFriend(newFriend)
 
-        //for (var i = 0; i < friendsData.length; i++) {
+    
         function searchFriend(newFriend) {
-            //Array max no compatible is 50
-            //var friendSelectedScore = [50]
+           
             console.log("____ NEW FREIND ____")
             console.log(newFriend)
             for (var i = 0; i < friendsData.length; i++) {
