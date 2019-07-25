@@ -202,86 +202,89 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"> Your Match is: </h4>
-            </div>
-            <div class="modal-body" id="main">
-            </div>
-            <div class="modal-footer" id="imgHolder">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="card mb-8" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-6" id ="imageSpace"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h5 class="card-title" id="main"> </h5>
+                            <p class="card-text" id="text"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-    </div>
+        <script type="text/javascript">
 
-    <script type="text/javascript">
+            $("#submit-button").on("click", function (event) {
+                event.preventDefault();
 
-        $("#submit-button").on("click", function (event) {
-            event.preventDefault();
+                var q1 = $("#question1").val()
+                var q2 = $("#question2").val()
+                var q3 = $("#question3").val()
+                var q4 = $("#question4").val()
+                var q5 = $("#question5").val()
+                var q6 = $("#question6").val()
+                var q7 = $("#question7").val()
+                var q8 = $("#question8").val()
 
-            var q1 = $("#question1").val()
-            var q2 = $("#question2").val()
-            var q3 = $("#question3").val()
-            var q4 = $("#question4").val()
-            var q5 = $("#question5").val()
-            var q6 = $("#question6").val()
-            var q7 = $("#question7").val()
-            var q8 = $("#question8").val()
+                //Create an object of the survey input
+                var friendInput = {
+                    name: $("#name").val(),
+                    photo: $("#imagelink").val(),
+                    scores: [
+                        parseInt(q1),
+                        parseInt(q2),
+                        parseInt(q3),
+                        parseInt(q4),
+                        parseInt(q5),
+                        parseInt(q6),
+                        parseInt(q7),
+                        parseInt(q8)
+                    ]
+                }
 
-            //Create an object of the survey input
-            var friendInput = {
-                name: $("#name").val(),
-                photo: $("#imagelink").val(),
-                scores: [
-                    parseInt(q1),
-                    parseInt(q2),
-                    parseInt(q3),
-                    parseInt(q4),
-                    parseInt(q5),
-                    parseInt(q6),
-                    parseInt(q7),
-                    parseInt(q8)
-                ]
-            }
+                //Push the info into the api/friends
+                $.post("/api/friends", friendInput)
+                    .then(function (data) {
+                        console.log(JSON.stringify(data))
+                        alert("Adding it to the api")
+                    });
 
-            //Push the info into the api/friends
-            $.post("/api/friends", friendInput)
-                .then(function (data) {
-                    console.log(JSON.stringify(data))
-                    alert("Adding it to the api")
+                //Add the match into you DATA BASE
+                $.get("/api/friends", function (data) {
+                    $("#myModal").modal();
+
+                    var $newImage = $("<img>");
+                    $newImage.attr("src", data[0].photo);
+                    $newImage.attr("class", "card-img-top")
+
+                    var $newDiv = $("<div>")
+                    $newDiv.text("Your match is:" + data[0].name)
+
+                    $("#main").append($newDiv)
+                    $("#imageSpace").append($newImage)
+                    $("#text").text("He cannot wait to meet you")
+                    $("#compatibility").append(data.scores)
                 });
-
-            //Add the match into you DATA BASE
-            $.get("/api/friends", function (data) {
-                $("#myModal").modal();
-                
-                var $newImage = $("<img>");
-                $newImage.attr("src", data[0].photo);
-
-                var $newDiv = $("<div>")
-                $newDiv.text("YOUR MATCH IS:" + data[0].name)
-
-                $("#main").append($newDiv)
-                $("#main").append($newImage)
-
-            });
-        })
+            })
 
 
-    </script>
+        </script>
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
 
 </body>

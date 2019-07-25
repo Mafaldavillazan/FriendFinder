@@ -60,6 +60,7 @@ module.exports = function (router) {
             for (var i = 0; i < arr2.length; i++) {
                 //Takes the value and can make the subtract without having to worry about the -
                 compatibleScore += Math.abs(parseInt(arr1[i]) - parseInt(arr2[i]))
+                
 
             }
             return compatibleScore
