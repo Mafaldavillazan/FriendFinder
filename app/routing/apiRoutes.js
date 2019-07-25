@@ -3,9 +3,11 @@
 // =============================================================
 var friendsData = require("../data/friends.js");
 
+
 // API
 // =============================================================
 module.exports = function (router) {
+
 
     //Gets the routes for friends
     router.get("/api/friends", function (req, res) {
@@ -20,45 +22,59 @@ module.exports = function (router) {
         //Push into into the arry inside the data
         friendsData.push(newFriend)
         res.json(newFriend)
-        //Compatibility logic
 
-        var compatible = searchFriend(newFriend)
-        
-        friendsData.push(compatible)
-        res.json(compatible)
+    })
+
+    //Variable with the best match info
+    var bestMatch = {
+        name: "AMIR",
+        photo: "https://images.unsplash.com/photo-1465931577419-3e7f810dc552?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80",
+        points: 50
+    }
+
+    router.get("/api/selected", function (req, res) {
+        res.json(bestMatch)
+    })
+
+
+    router.post("/api/selected", function (req, res) {
+
+        searchFriend(newFriend)
 
         //for (var i = 0; i < friendsData.length; i++) {
         function searchFriend(newFriend) {
             //Array max no compatible is 50
             //var friendSelectedScore = [50]
-
-            var friendSelected = []
-            var friendSelectedScore = [50]
-
+            console.log("____ NEW FREIND ____")
+            console.log(newFriend)
             for (var i = 0; i < friendsData.length; i++) {
                 //skip me
+                console.log("____ THE FRIEND ____")
+                console.log(friendsData[i])
                 if (friendsData[i].name === newFriend.name) continue
 
 
                 var selectedFriend = friendsData[i].scores
                 var result = compare(selectedFriend, newFriend.scores)
+                console.log("____ THE SELECTED FRIEND ____")
+                console.log(selectedFriend)
+                console.log("____ BEST MATCH ____")
+                console.log(bestMatch)
 
                 //Add  the smallest value
-                if (friendSelectedScore[0] === 50 || friendSelectedScore[0] > result) {
+                if (res.points === 50 || bestMatch.points > result) {
                     // Push that value friendSelected
-                    friendSelectedScore = []
-                    friendSelectedScore.push(result)
-                
 
-                    //Delete de value of the selected object
-                    friendSelected = []
-                    friendSelected.push(friendsData[i])
-            
+                    console.log("____ BEST MATCH POINTS ____")
+                    console.log(bestMatch.points)
+
+                    bestMatch.name = friendsData[i].name
+                    bestMatch.photo = friendsData[i].photo
+                    bestMatch.points = result
+
                 }
-
             }
-            //console.log(friendSelected)
-            return friendSelected
+            return bestMatch
         }
 
         function compare(arr1, arr2) {
@@ -72,7 +88,10 @@ module.exports = function (router) {
             return compatibleScore
         }
 
-        //I want to push the value of that selection
+        res.json(bestMatch)
     })
+
+
+
 
 }

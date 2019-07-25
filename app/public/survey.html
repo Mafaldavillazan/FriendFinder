@@ -62,7 +62,7 @@
 
                     <!-- Q2 : -->
                     <label class="col-form-label" for="inputDefault">
-                        <h5>Q1:</h5>
+                        <h5>Q2:</h5>
                     </label>
                     <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like dogs?</label>
                     <select class="form-control" id="question2">
@@ -75,7 +75,7 @@
 
                     <!-- Q3 : -->
                     <label class="col-form-label" for="inputDefault">
-                        <h5>Q1:</h5>
+                        <h5>Q3:</h5>
                     </label>
                     <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like sushi?</label>
                     <select class="form-control" id="question3">
@@ -88,7 +88,7 @@
 
                     <!-- Q4 : -->
                     <label class="col-form-label" for="inputDefault">
-                        <h5>Q1:</h5>
+                        <h5>Q4:</h5>
                     </label>
                     <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like going to the
                         beach?</label>
@@ -102,7 +102,7 @@
 
                     <!-- Q5 : -->
                     <label class="col-form-label" for="inputDefault">
-                        <h5>Q1:</h5>
+                        <h5>Q5:</h5>
                     </label>
                     <label class="col-form-label col-form-label-sm" for="inputSmall">how much do you like your
                         life?</label>
@@ -116,7 +116,7 @@
 
                     <!-- Q6 : -->
                     <label class="col-form-label" for="inputDefault">
-                        <h5>Q1:</h5>
+                        <h5>Q6:</h5>
                     </label>
                     <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you lie to
                         travel?</label>
@@ -157,7 +157,7 @@
                     </select>
 
 
-                    
+
 
                 </div>
                 <br>
@@ -208,7 +208,6 @@
 
         <script type="text/javascript">
 
-            console.log($("#name").value)
 
             var empty = true;
 
@@ -257,11 +256,12 @@
                         });
 
                     //Add the match into you DATA BASE
-    
-                    $.get("/api/friends", function (data) {
 
-                        var matchSelected = data[data.length-1][0]
-                
+
+                    $.get("/api/selected", function (data) {
+
+                        var matchSelected = data
+
                         var $newImage = $("<img>");
                         $newImage.attr("src", matchSelected.photo);
                         $newImage.attr("class", "card-img-top")
@@ -274,13 +274,15 @@
                         $("#text").text("He cannot wait to meet you. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit facere officiis ipsum, eveniet dolorum fuga pariatur excepturi?")
 
                     })
-                }
 
                 
-                else{
+                }
+
+
+                else {
                     alert("you need to input data")
                 }
-            
+
 
             });
 
