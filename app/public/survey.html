@@ -51,7 +51,7 @@
                     <label class="col-form-label" for="inputDefault">
                         <h5>Q1:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">Example 1?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like cats?</label>
                     <select class="form-control" id="question1">
                         <option>1</option>
                         <option>2</option>
@@ -64,7 +64,7 @@
                     <label class="col-form-label" for="inputDefault">
                         <h5>Q1:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">Example 2?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like dogs?</label>
                     <select class="form-control" id="question2">
                         <option>1</option>
                         <option>2</option>
@@ -77,7 +77,7 @@
                     <label class="col-form-label" for="inputDefault">
                         <h5>Q1:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">Example 3?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like sushi?</label>
                     <select class="form-control" id="question3">
                         <option>1</option>
                         <option>2</option>
@@ -85,6 +85,87 @@
                         <option>4</option>
                         <option>5</option>
                     </select>
+
+                    <!-- Q4 : -->
+                    <label class="col-form-label" for="inputDefault">
+                        <h5>Q1:</h5>
+                    </label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like going to the beach?</label>
+                    <select class="form-control" id="question4">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+                    <!-- Q5 : -->
+                    <label class="col-form-label" for="inputDefault">
+                        <h5>Q1:</h5>
+                    </label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">how much do you like your life?</label>
+                    <select class="form-control" id="question5">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+                    <!-- Q6 : -->
+                    <label class="col-form-label" for="inputDefault">
+                        <h5>Q1:</h5>
+                    </label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you lie to travel?</label>
+                    <select class="form-control" id="question6">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+
+                    <!-- Q7 : -->
+                    <label class="col-form-label" for="inputDefault">
+                        <h5>Q7:</h5>
+                    </label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like art?</label>
+                    <select class="form-control" id="question7">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+                    <!-- Q8 : -->
+                    <label class="col-form-label" for="inputDefault">
+                        <h5>Q8:</h5>
+                    </label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like your surrounding?</label>
+                    <select class="form-control" id="question8">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+
+                    <!-- Q4 : -->
+                    <label class="col-form-label" for="inputDefault">
+                        <h5>Q1:</h5>
+                    </label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">Example 4?</label>
+                    <select class="form-control" id="question4">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
 
                     <!-- Q4 : -->
                     <label class="col-form-label" for="inputDefault">
@@ -122,11 +203,15 @@
         $("#submit-button").on("click", function (event) {
             event.preventDefault();
 
-            var q1 =$("#question1").val()
+            var q1 = $("#question1").val()
             var q2 = $("#question2").val()
             var q3 = $("#question3").val()
             var q4 = $("#question4").val()
-        
+            var q5 = $("#question5").val()
+            var q6 = $("#question6").val()
+            var q7 = $("#question7").val()
+            var q8 = $("#question8").val()
+
             //Create an object of the survey input
             var friendInput = {
                 name: $("#name").val(),
@@ -135,7 +220,11 @@
                     parseInt(q1),
                     parseInt(q2),
                     parseInt(q3),
-                    parseInt(q4)
+                    parseInt(q4),
+                    parseInt(q5),
+                    parseInt(q6),
+                    parseInt(q7),
+                    parseInt(q8)
                 ]
             }
 
@@ -145,7 +234,11 @@
                     console.log(JSON.stringify(data))
                     alert("Adding it to the api")
                 });
+
+            //Add the match into you DATA BASE
+
         })
+
 
     </script>
 
@@ -160,6 +253,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>

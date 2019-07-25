@@ -29,14 +29,13 @@ module.exports = function (router) {
         //[5,1,4,4]
         // 2 0 1 3 
 
-        var friendSelected = []
-        var friendSelectedScore = []
-
         //for (var i = 0; i < friendsData.length; i++) {
         function searchFriend(newFriend) {
             //Array max no compatible is 50
-            var friendSelectedScore = [50]
+            //var friendSelectedScore = [50]
 
+            var friendSelected = []
+            var friendSelectedScore = [0]
 
             for (var i = 0; i < friendsData.length; i++) {
                 //skip me
@@ -71,7 +70,7 @@ module.exports = function (router) {
 
         function checkCompatibility(res, selectedScore, selectedPerson, newSel) {
             //If that value is smaller than the one there then...
-            if (selectedScore[0] > res) {
+            if (selectedScore[0] === 0 || selectedScore[0] > res) {
                 // Push that value friendSelected
                 selectedScore = []
                 selectedScore.push(res)
@@ -87,7 +86,8 @@ module.exports = function (router) {
 
             else {
                 //delete the value inside the array
-                sel = []
+                selectedScore = []
+                console.log("We are here!")
             }
         } return
 
