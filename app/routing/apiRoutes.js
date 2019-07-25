@@ -21,6 +21,31 @@ module.exports = function (router) {
         friendsData.push(newFriend)
         res.json(newFriend)
         //Compatibility logic
+
+        //[1,1,1,1,1]
+        //[5,1,4,4,5]
+        //
+        //loop through the ARRAY
+
+
+        //for (var i = 0; i < friendsData.length; i++) {
+        for (var i = 0; i < friendsData.length; i++) {
+            var selectedFriend = friendsData[i].scores
+            compare(selectedFriend, newFriend.scores)
+        }
+
+
+        function compare(arr1, arr2) {
+            var compatibleScore= 0;
+
+            for (var i = 0; i < arr2.length; i++) {
+               compatibleScore += Math.abs(parseInt(arr1[i])-parseInt(arr2[i]))
+               
+            }
+            console.log(compatibleScore)
+            return compatibleScore 
+        }
+
     })
 
 }
