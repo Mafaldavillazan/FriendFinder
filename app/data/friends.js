@@ -1,7 +1,7 @@
   //TO DOS
   //Select the lowest result of match
   //Select the object with the "winner info"
-  //Create a modal
+
 
 
 module.exports = friendsObj = [

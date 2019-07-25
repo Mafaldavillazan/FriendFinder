@@ -233,56 +233,85 @@
 
         <script type="text/javascript">
 
+            console.log($("#name").value)
+
+            var empty = true;
+
+
+
+
             $("#submit-button").on("click", function (event) {
                 event.preventDefault();
 
-                var q1 = $("#question1").val()
-                var q2 = $("#question2").val()
-                var q3 = $("#question3").val()
-                var q4 = $("#question4").val()
-                var q5 = $("#question5").val()
-                var q6 = $("#question6").val()
-                var q7 = $("#question7").val()
-                var q8 = $("#question8").val()
+                $('input[type="text"]').each(function () {
+                    if ($(this).val() != "") {
+                        empty = false;
+                        return false;
+                    }
+                });
 
-                //Create an object of the survey input
-                var friendInput = {
-                    name: $("#name").val(),
-                    photo: $("#imagelink").val(),
-                    scores: [
-                        parseInt(q1),
-                        parseInt(q2),
-                        parseInt(q3),
-                        parseInt(q4),
-                        parseInt(q5),
-                        parseInt(q6),
-                        parseInt(q7),
-                        parseInt(q8)
-                    ]
+                if (!empty) {
+
+                    var q1 = $("#question1").val()
+                    var q2 = $("#question2").val()
+                    var q3 = $("#question3").val()
+                    var q4 = $("#question4").val()
+                    var q5 = $("#question5").val()
+                    var q6 = $("#question6").val()
+                    var q7 = $("#question7").val()
+                    var q8 = $("#question8").val()
+
+                    //Create an object of the survey input
+                    var friendInput = {
+                        name: $("#name").val(),
+                        photo: $("#imagelink").val(),
+                        scores: [
+                            parseInt(q1),
+                            parseInt(q2),
+                            parseInt(q3),
+                            parseInt(q4),
+                            parseInt(q5),
+                            parseInt(q6),
+                            parseInt(q7),
+                            parseInt(q8)
+                        ]
+                    }
+
+                    //Push the info into the api/friends
+                    $.post("/api/friends", friendInput)
+                        .then(function (data) {
+                            console.log(JSON.stringify(data))
+                            alert("Adding it to the api")
+                        });
+
+                    //Add the match into you DATA BASE
+                    $.get("/api/friends", function (data) {
+
+                        var $newImage = $("<img>");
+                        $newImage.attr("src", data[0].photo);
+                        $newImage.attr("class", "card-img-top")
+                        $("#imageSpace").html($newImage)
+
+                        var $newDiv = $("<h4>")
+                        $newDiv.text(data[0].name)
+                        $("#match").html($newDiv)
+
+                        $("#text").text("He cannot wait to meet you. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit facere officiis ipsum, eveniet dolorum fuga pariatur excepturi?")
+
+                    })
                 }
 
-                //Push the info into the api/friends
-                $.post("/api/friends", friendInput)
-                    .then(function (data) {
-                        console.log(JSON.stringify(data))
-                        alert("Adding it to the api")
-                    });
+                
+                else{
+                    alert("you need to input data")
+                }
+            
 
-                //Add the match into you DATA BASE
-                $.get("/api/friends", function (data) {
+            });
 
-                    var $newImage = $("<img>");
-                    $newImage.attr("src", data[0].photo);
-                    $newImage.attr("class", "card-img-top")
-                    $("#imageSpace").html($newImage)
 
-                    var $newDiv = $("<h4>")
-                    $newDiv.text(data[0].name)
-                    $("#match").html($newDiv)
 
-                    $("#text").text("He cannot wait to meet you. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit facere officiis ipsum, eveniet dolorum fuga pariatur excepturi?")
-                });
-            })
+
 
 
         </script>
