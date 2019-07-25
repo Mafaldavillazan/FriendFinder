@@ -1,7 +1,7 @@
 module.exports = friendsObj = [
   {
     "name": "Ahmed",
-    "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "photo": "https://images.unsplash.com/photo-1462062651745-495db7fa268a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
     "scores": [
       5,
       1,

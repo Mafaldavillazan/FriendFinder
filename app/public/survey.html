@@ -90,7 +90,8 @@
                     <label class="col-form-label" for="inputDefault">
                         <h5>Q1:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like going to the beach?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like going to the
+                        beach?</label>
                     <select class="form-control" id="question4">
                         <option>1</option>
                         <option>2</option>
@@ -103,7 +104,8 @@
                     <label class="col-form-label" for="inputDefault">
                         <h5>Q1:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">how much do you like your life?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">how much do you like your
+                        life?</label>
                     <select class="form-control" id="question5">
                         <option>1</option>
                         <option>2</option>
@@ -116,7 +118,8 @@
                     <label class="col-form-label" for="inputDefault">
                         <h5>Q1:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you lie to travel?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you lie to
+                        travel?</label>
                     <select class="form-control" id="question6">
                         <option>1</option>
                         <option>2</option>
@@ -143,7 +146,8 @@
                     <label class="col-form-label" for="inputDefault">
                         <h5>Q8:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like your surrounding?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like your
+                        surrounding?</label>
                     <select class="form-control" id="question8">
                         <option>1</option>
                         <option>2</option>
@@ -196,6 +200,19 @@
 
         </div>
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"> Your Match is: </h4>
+            </div>
+            <div class="modal-body" id="main">
+            </div>
+            <div class="modal-footer" id="imgHolder">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
 
     <script type="text/javascript">
@@ -236,7 +253,19 @@
                 });
 
             //Add the match into you DATA BASE
+            $.get("/api/friends", function (data) {
+                $("#myModal").modal();
+                
+                var $newImage = $("<img>");
+                $newImage.attr("src", data[0].photo);
 
+                var $newDiv = $("<div>")
+                $newDiv.text("YOUR MATCH IS:" + data[0].name)
+
+                $("#main").append($newDiv)
+                $("#main").append($newImage)
+
+            });
         })
 
 
