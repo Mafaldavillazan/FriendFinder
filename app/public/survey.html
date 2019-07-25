@@ -157,32 +157,7 @@
                     </select>
 
 
-                    <!-- Q4 : -->
-                    <label class="col-form-label" for="inputDefault">
-                        <h5>Q1:</h5>
-                    </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">Example 4?</label>
-                    <select class="form-control" id="question4">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-
-
-                    <!-- Q4 : -->
-                    <label class="col-form-label" for="inputDefault">
-                        <h5>Q1:</h5>
-                    </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">Example 4?</label>
-                    <select class="form-control" id="question4">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                    
 
                 </div>
                 <br>
@@ -237,9 +212,6 @@
 
             var empty = true;
 
-
-
-
             $("#submit-button").on("click", function (event) {
                 event.preventDefault();
 
@@ -285,15 +257,18 @@
                         });
 
                     //Add the match into you DATA BASE
+    
                     $.get("/api/friends", function (data) {
 
+                        var matchSelected = data[data.length-1][0]
+                
                         var $newImage = $("<img>");
-                        $newImage.attr("src", data[0].photo);
+                        $newImage.attr("src", matchSelected.photo);
                         $newImage.attr("class", "card-img-top")
                         $("#imageSpace").html($newImage)
 
                         var $newDiv = $("<h4>")
-                        $newDiv.text(data[0].name)
+                        $newDiv.text(matchSelected.name)
                         $("#match").html($newDiv)
 
                         $("#text").text("He cannot wait to meet you. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit facere officiis ipsum, eveniet dolorum fuga pariatur excepturi?")

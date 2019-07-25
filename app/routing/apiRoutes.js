@@ -22,12 +22,10 @@ module.exports = function (router) {
         res.json(newFriend)
         //Compatibility logic
 
-        searchFriend(newFriend)
-
-
-        //[3,1,3,1]
-        //[5,1,4,4]
-        // 2 0 1 3 
+        var compatible = searchFriend(newFriend)
+        
+        friendsData.push(compatible)
+        res.json(compatible)
 
         //for (var i = 0; i < friendsData.length; i++) {
         function searchFriend(newFriend) {
@@ -35,7 +33,7 @@ module.exports = function (router) {
             //var friendSelectedScore = [50]
 
             var friendSelected = []
-            var friendSelectedScore = [0]
+            var friendSelectedScore = [50]
 
             for (var i = 0; i < friendsData.length; i++) {
                 //skip me
@@ -45,53 +43,36 @@ module.exports = function (router) {
                 var selectedFriend = friendsData[i].scores
                 var result = compare(selectedFriend, newFriend.scores)
 
+                //Add  the smallest value
+                if (friendSelectedScore[0] === 50 || friendSelectedScore[0] > result) {
+                    // Push that value friendSelected
+                    friendSelectedScore = []
+                    friendSelectedScore.push(result)
+                
 
-                //"" WHY is it console logging 0
-                //console.log(result)
-
-                checkCompatibility(result, friendSelectedScore, friendSelected, friendsData[i])
+                    //Delete de value of the selected object
+                    friendSelected = []
+                    friendSelected.push(friendsData[i])
+            
+                }
 
             }
+            //console.log(friendSelected)
+            return friendSelected
         }
-
 
         function compare(arr1, arr2) {
             var compatibleScore = 0;
             for (var i = 0; i < arr2.length; i++) {
                 //Takes the value and can make the subtract without having to worry about the -
                 compatibleScore += Math.abs(parseInt(arr1[i]) - parseInt(arr2[i]))
-                
+
 
             }
             return compatibleScore
         }
 
         //I want to push the value of that selection
-
-
-        function checkCompatibility(res, selectedScore, selectedPerson, newSel) {
-            //If that value is smaller than the one there then...
-            if (selectedScore[0] === 0 || selectedScore[0] > res) {
-                // Push that value friendSelected
-                selectedScore = []
-                selectedScore.push(res)
-                console.log("arr")
-                console.log(selectedScore)
-
-                //Delete de value of the selected object
-                selectedPerson = []
-                selectedPerson.push(newSel)
-                console.log("newSel")
-                console.log(selectedPerson)
-            }
-
-            else {
-                //delete the value inside the array
-                selectedScore = []
-                console.log("We are here!")
-            }
-        } return
-
     })
 
 }
