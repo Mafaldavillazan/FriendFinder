@@ -248,17 +248,8 @@
                         ]
                     }
 
-                    //Push the info into the api/friends
-                    $.post("/api/friends", friendInput)
-                        .then(function (data) {
-                            console.log(JSON.stringify(data))
-                            alert("Adding it to the api")
-                        });
 
-                    //Add the match into you DATA BASE
-
-
-                    $.get("/api/selected", function (data) {
+                    $.post("/api/friends",friendInput, function (data) {
 
                         var matchSelected = data
 
