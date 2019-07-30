@@ -6,13 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!--jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- Required meta tags -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Using different CSS style that can be applied to bootstrap-->
     <link rel="stylesheet" href="../../css/bootstrap.min.css" media="screen">
     <!-- Icons-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <title>Home</title>
+    <title>Survey</title>
 </head>
 
 <body>
@@ -38,7 +42,7 @@
                     <input type="text" class="form-control" placeholder="Ex: Mafalda Villazan" id="name" required>
 
                     <label class="col-form-label" for="inputDefault">Link to a photo</label>
-                    <input type="text" class="form-control" placeholder="Ex: https:..." id="image.lin" required>
+                    <input type="text" class="form-control" placeholder="Ex: https:..." id="imagelink" required>
 
                     <br>
                     <h4>Questions</h4>
@@ -47,7 +51,7 @@
                     <label class="col-form-label" for="inputDefault">
                         <h5>Q1:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">Example 1?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like cats?</label>
                     <select class="form-control" id="question1">
                         <option>1</option>
                         <option>2</option>
@@ -58,9 +62,9 @@
 
                     <!-- Q2 : -->
                     <label class="col-form-label" for="inputDefault">
-                        <h5>Q1:</h5>
+                        <h5>Q2:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">Example 2?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like dogs?</label>
                     <select class="form-control" id="question2">
                         <option>1</option>
                         <option>2</option>
@@ -71,9 +75,9 @@
 
                     <!-- Q3 : -->
                     <label class="col-form-label" for="inputDefault">
-                        <h5>Q1:</h5>
+                        <h5>Q3:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">Example 3?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like sushi?</label>
                     <select class="form-control" id="question3">
                         <option>1</option>
                         <option>2</option>
@@ -84,9 +88,10 @@
 
                     <!-- Q4 : -->
                     <label class="col-form-label" for="inputDefault">
-                        <h5>Q1:</h5>
+                        <h5>Q4:</h5>
                     </label>
-                    <label class="col-form-label col-form-label-sm" for="inputSmall">Example 4?</label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like going to the
+                        beach?</label>
                     <select class="form-control" id="question4">
                         <option>1</option>
                         <option>2</option>
@@ -95,34 +100,203 @@
                         <option>5</option>
                     </select>
 
-                </div>
+                    <!-- Q5 : -->
+                    <label class="col-form-label" for="inputDefault">
+                        <h5>Q5:</h5>
+                    </label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">how much do you like your
+                        life?</label>
+                    <select class="form-control" id="question5">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
 
+                    <!-- Q6 : -->
+                    <label class="col-form-label" for="inputDefault">
+                        <h5>Q6:</h5>
+                    </label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you lie to
+                        travel?</label>
+                    <select class="form-control" id="question6">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+
+                    <!-- Q7 : -->
+                    <label class="col-form-label" for="inputDefault">
+                        <h5>Q7:</h5>
+                    </label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like art?</label>
+                    <select class="form-control" id="question7">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+                    <!-- Q8 : -->
+                    <label class="col-form-label" for="inputDefault">
+                        <h5>Q8:</h5>
+                    </label>
+                    <label class="col-form-label col-form-label-sm" for="inputSmall">How much do you like your
+                        surrounding?</label>
+                    <select class="form-control" id="question8">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+
+
+
+                </div>
+                <br>
                 <div class="jumbotron text-center alert alert-dismissible alert-info">
 
-                    <button type="submit" class="btn btn-outline-info" id="submit">
+                    <button type="submit" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal"
+                        id="submit-button">
                         <i class="fa fa-check"></i>
                         Submit
                     </button>
 
                 </div>
 
+
             </div>
 
         </div>
 
-    </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title"> Your match is: </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row no-gutters">
+                            <div class="col-md-6" id="imageSpace">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title" id="match"> </h5>
+                                    <p class="card-text" id="text"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript">
+
+
+            var empty = true;
+
+            $("#submit-button").on("click", function (event) {
+                event.preventDefault();
+
+                $('input[type="text"]').each(function () {
+                    if ($(this).val() != "") {
+                        empty = false;
+                        return false;
+                    }
+                });
+
+                if (!empty) {
+
+                    var q1 = $("#question1").val()
+                    var q2 = $("#question2").val()
+                    var q3 = $("#question3").val()
+                    var q4 = $("#question4").val()
+                    var q5 = $("#question5").val()
+                    var q6 = $("#question6").val()
+                    var q7 = $("#question7").val()
+                    var q8 = $("#question8").val()
+
+                    //Create an object of the survey input
+                    var friendInput = {
+                        name: $("#name").val(),
+                        photo: $("#imagelink").val(),
+                        scores: [
+                            parseInt(q1),
+                            parseInt(q2),
+                            parseInt(q3),
+                            parseInt(q4),
+                            parseInt(q5),
+                            parseInt(q6),
+                            parseInt(q7),
+                            parseInt(q8)
+                        ]
+                    }
+
+
+                    $.post("/api/friends",friendInput, function (data) {
+
+                        var matchSelected = data
+
+                        var $newImage = $("<img>");
+                        $newImage.attr("src", matchSelected.photo);
+                        $newImage.attr("class", "card-img-top")
+                        $("#imageSpace").html($newImage)
+
+                        var $newDiv = $("<h4>")
+                        $newDiv.text(matchSelected.name)
+                        $("#match").html($newDiv)
+
+                        $("#text").text("He cannot wait to meet you. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit facere officiis ipsum, eveniet dolorum fuga pariatur excepturi?")
+
+                    })
+
+                
+                }
+
+
+                else {
+                    alert("you need to input data")
+                }
+
+
+            });
+
+
+
+
+
+
+        </script>
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
